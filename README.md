@@ -1,5 +1,5 @@
 ### To run this app, you need to run these commands
-npm i
+npm i\
 npm start
 
 ### Note
