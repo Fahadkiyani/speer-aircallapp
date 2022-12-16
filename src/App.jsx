@@ -13,9 +13,10 @@ import store from './Redux/store';
 import { Provider } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { SetArchivedFeeds, SetActiveFeeds, SetActiveFeedsToArchive } from './Redux/API_Data.js';
+import { SetArchivedFeeds, SetActiveFeeds, SetActiveFeedsToArchive } from './Redux/feeds.js';
 
 import './css/app.css'
+import { BASE_URL } from './utils/service.js';
 
 
 
@@ -24,9 +25,9 @@ const App = () => {
   const [shouldFetch, setShouldFetch] = useState(false);
 
   // Reading Data from Redux store. 
-  const myActiveFeeds = useSelector(state => state.API_Data.ActiveFeeds);
-  const myArchivedFeeds = useSelector(state => state.API_Data.ArchivedFeeds);
-  const Title = useSelector(state => state.changeSlice.title);
+  const myActiveFeeds = useSelector(state => state.feeds?.ActiveFeeds);
+  const myArchivedFeeds = useSelector(state => state.feeds?.ArchivedFeeds);
+  const Title = useSelector(state => state.title?.title);
 
   let dispatch = useDispatch();
 
@@ -82,14 +83,14 @@ const App = () => {
 
 
   const fetchFeeds = async () => {
-    let data = await axios('https://aircall-job.herokuapp.com/activities');
+    let data = await axios(`${BASE_URL}/activities`);
     return data.data;
   }
 
   const archiveAll = () => {
     // eslint-disable-next-line
     myActiveFeeds.map((data, i) => {
-      axios.post(`https://aircall-job.herokuapp.com/activities/${data.id}`, {
+      axios.patch(`${BASE_URL}/activities/${data.id}`, {
         is_archived: true
       })
         .then(function (response) {
@@ -103,7 +104,7 @@ const App = () => {
   }
 
   const resetAll = async () => {
-    await axios.get('https://aircall-job.herokuapp.com/reset');
+    await axios.patch(`${BASE_URL}/reset`);
     setShouldFetch(true)
   }
 

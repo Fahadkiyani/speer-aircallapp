@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = { ActiveFeeds: [], ArchivedFeeds: [] };
 
-const API_Data = createSlice({
-  name: 'APIData',
+const feedsSlice = createSlice({
+  name: 'feeds',
   initialState,
   reducers: {
     SetActiveFeeds(state, action) {
@@ -33,6 +33,6 @@ const API_Data = createSlice({
   }
 })
 
-export const { SetActiveFeeds, SetArchivedFeeds, SetActiveFeedsToArchive, SetArchivedFeedsToActive} = API_Data.actions;
+export const { SetActiveFeeds, SetArchivedFeeds, SetActiveFeedsToArchive, SetArchivedFeedsToActive} = feedsSlice.actions;
 
-export default API_Data.reducer;
+export default feedsSlice.reducer;

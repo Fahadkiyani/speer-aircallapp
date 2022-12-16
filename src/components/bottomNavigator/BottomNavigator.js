@@ -10,12 +10,12 @@ import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 import { useSelector,useDispatch } from 'react-redux';
-import {changeTitle} from '../../Redux/Slice';
+import {changeTitle} from '../../Redux/title';
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('Active Feeds');
 
-  const Title = useSelector(state=>state.changeSlice.title);
+  const Title = useSelector(state=>state.title.title);
   const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {

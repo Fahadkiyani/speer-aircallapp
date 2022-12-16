@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {title:'Active Feeds',reload:false}
 
-const changeSlice = createSlice({
-  name: 'change',
+const titleSlice = createSlice({
+  name: 'title',
   initialState,
   reducers: {
     changeTitle(state,action){
@@ -13,6 +13,6 @@ const changeSlice = createSlice({
 
 })
 
-export const { changeReload,changeTitle } = changeSlice.actions;
+export const { changeReload,changeTitle } = titleSlice.actions;
 
-export default changeSlice.reducer;
+export default titleSlice.reducer;

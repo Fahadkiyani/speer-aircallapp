@@ -1,0 +1,1 @@
+export const BASE_URL = "https://charming-bat-singlet.cyclic.app/https://cerulean-marlin-wig.cyclic.app/"
