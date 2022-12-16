@@ -6,5 +6,5 @@ npm i\
 npm start
 
 ### Note
-node version 12.13.0 is being used for this project/
+Node version 12.13.0 is being used for this project\
 You can switch node version by using nvm use 12.13.0
